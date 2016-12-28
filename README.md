@@ -1,0 +1,2 @@
+# glarbot
+A Discord bot
