@@ -1,6 +1,7 @@
-module.exports = function Command(name, args) {
+function Command(name, args, commands) {
 	this.name = name;
 	this.args = args;
+	commands.add(this);
+}
 
-	this.onCalled = function(message) {};
-};
+module.exports = Command;

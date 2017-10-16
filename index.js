@@ -3,24 +3,26 @@ const client = new Discord.Client();
 const Command = require('./command.js');
 const Commands = require('./commands.js');
 
+//command stuff
 var commands = new Commands();
 
-var helpCommand = new Command("!help", "");
-helpCommand.onCalled = function(message) {
-	message.reply("Working!");
+var commandsCommand = new Command("!commands", "", commands);
+commandsCommand.onCalled = function(message) {
+	message.reply(commands.commandNameList);
 };
 
-commands.add(helpCommand);
+var pingCommand = new Command("!ping", "", commands);
+pingCommand.onCalled = function(message) {
+	message.reply("Pong!");
+};
 
-client.on('ready', () => {
+//server stuff
+client.on('ready', function() {
 	console.log('I am ready!');
 });
 
-client.on('message', message => {
+client.on('message', function(message) {
 	commands.commandListener(message);
-	if (message.content === 'ping') {
-		message.reply('pong');
-	}
 });
 
 client.login('MjYzMjEzNDE5ODQxMzIzMDA4.DMXbnQ.WxW0cxhLdRC-zD5Tmmi6baHZM1g');
