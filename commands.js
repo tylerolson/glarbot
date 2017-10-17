@@ -4,8 +4,11 @@ function Commands() {
 
 	this.commandListener = function(message) {
 		for (i = 0; i < this.commandList.length; i++) {
-			if (message.content == this.commandList[i].name) {
-				this.commandList[i].onCalled(message);
+			if (message.content.toLowerCase().startsWith(this.commandList[i].name)) {
+				console.log("MSG > " + message.content);
+				var tempArgs = message.content.trim().split(/ +/g);
+				tempArgs.shift();
+				this.commandList[i].onCalled(message, tempArgs);
 			}
 		}
 	};

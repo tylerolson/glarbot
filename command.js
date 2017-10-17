@@ -1,6 +1,5 @@
-function Command(name, args, commands) {
+function Command(name, commands) {
 	this.name = name;
-	this.args = args;
 	commands.add(this);
 }
 
