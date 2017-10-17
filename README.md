@@ -6,7 +6,7 @@ A Discord bot made by Glarity using the [discord.js](https://discord.js.org).
 
 ## Usage
 
-Clone the project and change the login key to your own [bot](https://discordapp.com/developers/applications/me). Then run 'node index'.
+Clone the project and enter "npm install --save discord.js". Then change your bot key in the config.json file. After that run "node index"
 
 ## Contributing
 
