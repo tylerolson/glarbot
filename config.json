@@ -1,3 +1,10 @@
 {
+	"presence": {
+			"status": "dnd",
+			"game": {
+				"name": "made by Glarity",
+				"url": ""
+			}
+	},
 	"token": ""
 }

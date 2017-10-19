@@ -1,18 +1,18 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
-const Command = require('./command.js');
-const Commands = require('./commands.js');
+const Command = require('./Command.js');
+const CommandManager = require('./CommandManager.js');
 
 //command stuff
-var commands = new Commands();
+var commandManager = new CommandManager();
 
-var commandsCommand = new Command("!commands", commands);
+var commandsCommand = new Command("!commands", commandManager);
 commandsCommand.onCalled = function(message) {
-	message.reply(commands.commandNameList);
+	message.reply(commandManager.getCommandsNameList());
 };
 
-var getInfoCommand = new Command("!getinfo", commands);
+var getInfoCommand = new Command("!getinfo", commandManager);
 getInfoCommand.onCalled = function(message, args) {
 	if (args.length > 0) {
 		if (args[0].startsWith("<@")) {
@@ -26,24 +26,19 @@ getInfoCommand.onCalled = function(message, args) {
 	}
 };
 
-var pingCommand = new Command("!ping", commands);
+var pingCommand = new Command("!ping", commandManager);
 pingCommand.onCalled = function(message, args) {
 	message.reply("Pong! " + args + " " + message.member.id);
 };
 
 //server stuff
 client.on('ready', function() {
-	client.user.setPresence({
-		status: "dnd",
-		game: {
-			name: "made by @Glarity",
-		}
-	});
+	client.user.setPresence(config.presence);
 	console.log('I am ready!');
 });
 
 client.on('message', function(message) {
-	commands.commandListener(message);
+	commandManager.commandListener(message);
 });
 
 client.login(config.token);

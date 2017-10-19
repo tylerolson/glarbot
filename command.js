@@ -1,6 +1,6 @@
-function Command(name, commands) {
+function Command(name, commandManager) {
 	this.name = name;
-	commands.add(this);
+	commandManager.add(this);
 }
 
 module.exports = Command;

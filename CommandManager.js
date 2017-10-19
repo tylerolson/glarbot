@@ -1,4 +1,4 @@
-function Commands() {
+function CommandManager() {
 	this.commandList = [];
 	this.commandNameList = [];
 
@@ -27,4 +27,4 @@ function Commands() {
 	};
 }
 
-module.exports = Commands;
+module.exports = CommandManager;
